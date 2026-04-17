@@ -1,0 +1,4 @@
+C:\Users\Chace\padlink\windows\desktop-app\publish\PadLink-Windows-x64-SelfContained\PadLink.DesktopApp.pdb
+C:\Users\Chace\padlink\windows\desktop-app\publish\PadLink-Windows-x64-SelfContained\PadLink.Hosting.pdb
+C:\Users\Chace\padlink\windows\desktop-app\publish\PadLink-Windows-x64-SelfContained\PadLink.Protocol.pdb
+C:\Users\Chace\padlink\windows\desktop-app\publish\PadLink-Windows-x64-SelfContained\PadLink.DesktopApp.exe
