@@ -1,9 +1,5 @@
-The executable is not codesigned.
-Domain: LaunchExecutableValidationErrorDomain
-Code: 1
-Recovery Suggestion: Sign the executable with a valid certificate and provisioning profile.
-User Info: {
-    DVTErrorCreationDateKey = "2026-04-17 13:37:11 +0000";
-    IDERunOperationFailingWorker = IDEInstallCoreDeviceWorker;
-}
---
+Communication with Apple failed
+Your team has no devices from which to generate a provisioning profile. Connect a device to use or manually add device IDs in Certificates, Identifiers & Profiles. https://developer.apple.com/account/
+
+No profiles for 'chacegarcia.ipad-monitor' were found
+Xcode couldn't find any iOS App Development provisioning profiles matching 'chacegarcia.ipad-monitor'.
