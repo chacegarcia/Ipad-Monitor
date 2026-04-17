@@ -97,22 +97,19 @@ final class PadLinkSessionModel: ObservableObject {
 
     private func waitUntilReady(conn: NWConnection) async throws {
         try await withCheckedThrowingContinuation { (cont: CheckedContinuation<Void, Error>) in
-            var resumed = false
+            let gate = OneShotContinuationGate()
             conn.stateUpdateHandler = { state in
                 switch state {
                 case .ready:
-                    if !resumed {
-                        resumed = true
+                    if gate.tryConsume() {
                         cont.resume()
                     }
                 case .failed(let error):
-                    if !resumed {
-                        resumed = true
+                    if gate.tryConsume() {
                         cont.resume(throwing: error)
                     }
                 case .cancelled:
-                    if !resumed {
-                        resumed = true
+                    if gate.tryConsume() {
                         cont.resume(throwing: PadLinkError.connectionClosed)
                     }
                 default:
@@ -194,6 +191,21 @@ final class PadLinkSessionModel: ObservableObject {
                 }
             })
         }
+    }
+}
+
+/// Thread-safe single consume for NWConnection `stateUpdateHandler` + `withCheckedThrowingContinuation`
+/// (Swift 6 disallows mutating a captured `var` from concurrent network callbacks).
+private final class OneShotContinuationGate: @unchecked Sendable {
+    private let lock = NSLock()
+    private var consumed = false
+
+    func tryConsume() -> Bool {
+        lock.lock()
+        defer { lock.unlock() }
+        guard !consumed else { return false }
+        consumed = true
+        return true
     }
 }
 
