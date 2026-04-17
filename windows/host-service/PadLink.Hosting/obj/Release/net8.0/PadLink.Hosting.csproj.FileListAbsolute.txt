@@ -1,0 +1,15 @@
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\obj\Release\net8.0\PadLink.Hosting.csproj.AssemblyReference.cache
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\obj\Release\net8.0\PadLink.Hosting.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\obj\Release\net8.0\PadLink.Hosting.AssemblyInfoInputs.cache
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\obj\Release\net8.0\PadLink.Hosting.AssemblyInfo.cs
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\obj\Release\net8.0\PadLink.Hosting.csproj.CoreCompileInputs.cache
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\bin\Release\net8.0\PadLink.Hosting.deps.json
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\bin\Release\net8.0\PadLink.Hosting.dll
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\bin\Release\net8.0\PadLink.Hosting.pdb
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\bin\Release\net8.0\PadLink.Protocol.dll
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\bin\Release\net8.0\PadLink.Protocol.pdb
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\obj\Release\net8.0\PadLink..D8C7A3EF.Up2Date
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\obj\Release\net8.0\PadLink.Hosting.dll
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\obj\Release\net8.0\refint\PadLink.Hosting.dll
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\obj\Release\net8.0\PadLink.Hosting.pdb
+C:\Users\Chace\padlink\windows\host-service\PadLink.Hosting\obj\Release\net8.0\ref\PadLink.Hosting.dll

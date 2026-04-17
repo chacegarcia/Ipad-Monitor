@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+package padlink.v1;
+
+option csharp_namespace = "PadLink.Protocol";
+
+// ---------------------------------------------------------------------------
+// Session: handshake + mode negotiation (extend vs mirror decided on Windows;
+// we report capabilities and the active virtual target size).
+// ---------------------------------------------------------------------------
+
+message SessionHello {
+  string client_name = 1;
+  uint32 protocol_version = 2;
+  // Optional: client-supported codecs in preference order.
+  repeated VideoCodec codecs_supported = 3;
+}
+
+message SessionAck {
+  bool ok = 1;
+  string session_id = 2;
+  string error_message = 3;
+  uint32 protocol_version = 4;
+  VideoCodec selected_codec = 5;
+  DisplayMode negotiated_mode = 6;
+}
+
+message DisplayMode {
+  uint32 width_px = 1;
+  uint32 height_px = 2;
+  // Refresh in millihertz (e.g. 60000 = 60.000 Hz) — avoids float issues.
+  uint32 refresh_millihertz = 3;
+}
+
+enum VideoCodec {
+  VIDEO_CODEC_UNKNOWN = 0;
+  RAW_RGBA_TEST = 1;   // Vertical slice / lab only
+  H264 = 2;
+  H265 = 3;
+}
+
+// ---------------------------------------------------------------------------
+// Wire envelope: single top-level message for TCP framing.
+// ---------------------------------------------------------------------------
+
+message WireEnvelope {
+  oneof payload {
+    SessionHello hello = 1;
+    SessionAck session_ack = 2;
+    FrameBundle frame_bundle = 3;
+    InputEventBatch input_batch = 4;
+    StatsReport stats = 5;
+    ClipboardPayload clipboard = 6; // reserved
+  }
+}
+
+// One logical frame: header + encoded blob (or raw test bytes).
+message FrameBundle {
+  FrameHeader header = 1;
+  bytes payload = 2; // codec-specific; for H264 Annex-B or AVCC per SessionAck field (TODO)
+}
+
+message FrameHeader {
+  uint64 frame_index = 1;
+  uint64 capture_timestamp_unix_ms = 2;
+  uint32 width_px = 3;
+  uint32 height_px = 4;
+  VideoCodec codec = 5;
+  // Encode pipeline timestamps (microseconds, monotonic source on host).
+  uint64 host_capture_us = 6;
+  uint64 host_encode_end_us = 7;
+}
+
+// ---------------------------------------------------------------------------
+// Input: batched to amortize overhead.
+// ---------------------------------------------------------------------------
+
+message InputEventBatch {
+  repeated InputEvent events = 1;
+}
+
+message InputEvent {
+  uint64 event_timestamp_unix_ms = 1;
+  InputKind kind = 2;
+  float x_norm = 3;  // 0..1 relative to stream width
+  float y_norm = 4;  // 0..1 relative to stream height
+  float pressure = 5; // 0..1 for pencil
+  uint32 buttons = 6; // bitmask: left/right/middle
+  int32 wheel_delta = 7;
+}
+
+enum InputKind {
+  INPUT_KIND_UNKNOWN = 0;
+  POINTER_MOVE = 1;
+  POINTER_DOWN = 2;
+  POINTER_UP = 3;
+  TOUCH = 4;
+  PENCIL = 5;
+}
+
+// ---------------------------------------------------------------------------
+// Telemetry
+// ---------------------------------------------------------------------------
+
+message StatsReport {
+  uint32 fps = 1;
+  uint32 encode_latency_ms = 2;
+  uint32 decode_latency_ms = 3;
+  uint32 round_trip_input_ms = 4;
+  string transport_name = 5;
+}
+
+// Reserved / optional
+message ClipboardPayload {
+  string mime = 1;
+  bytes data = 2;
+}

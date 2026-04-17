@@ -1,0 +1,12 @@
+C:\Users\Chace\padlink\windows\shared-protocol\bin\Release\net8.0\PadLink.Protocol.deps.json
+C:\Users\Chace\padlink\windows\shared-protocol\bin\Release\net8.0\PadLink.Protocol.dll
+C:\Users\Chace\padlink\windows\shared-protocol\bin\Release\net8.0\PadLink.Protocol.pdb
+C:\Users\Chace\padlink\windows\shared-protocol\obj\Release\net8.0\PadLink.Protocol.csproj.AssemblyReference.cache
+C:\Users\Chace\padlink\windows\shared-protocol\obj\Release\net8.0\PadLink.Protocol.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Chace\padlink\windows\shared-protocol\obj\Release\net8.0\PadLink.Protocol.AssemblyInfoInputs.cache
+C:\Users\Chace\padlink\windows\shared-protocol\obj\Release\net8.0\PadLink.Protocol.AssemblyInfo.cs
+C:\Users\Chace\padlink\windows\shared-protocol\obj\Release\net8.0\PadLink.Protocol.csproj.CoreCompileInputs.cache
+C:\Users\Chace\padlink\windows\shared-protocol\obj\Release\net8.0\PadLink.Protocol.dll
+C:\Users\Chace\padlink\windows\shared-protocol\obj\Release\net8.0\refint\PadLink.Protocol.dll
+C:\Users\Chace\padlink\windows\shared-protocol\obj\Release\net8.0\PadLink.Protocol.pdb
+C:\Users\Chace\padlink\windows\shared-protocol\obj\Release\net8.0\ref\PadLink.Protocol.dll
